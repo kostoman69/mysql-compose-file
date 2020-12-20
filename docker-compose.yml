@@ -5,7 +5,7 @@ services:
      restart: always
      container_name: mysqldb
      environment:
-       MYSQL_ROOT_PASSWORD: akarea
+       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysqlpasswd
      networks:
        - mynet
      ports:
