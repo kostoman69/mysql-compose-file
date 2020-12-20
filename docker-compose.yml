@@ -1,4 +1,4 @@
-Version: '3.8'
+version: '3.8'
 services:
    db:
      image: mysql
@@ -6,15 +6,15 @@ services:
      container_name: mysqldb
      environment:
        MYSQL_ROOT_PASSWORD: akarea
-	 networks:
-	   -mynet
+     networks:
+       - mynet
      ports:
-	   -target: 3306
-	    published: 3307
+       - target: 3306
+         published: 3307
      volumes:
-	   -type: volume
-	    source: db-data
-	    target: /var/lib/mysql
+       - type: volume
+         source: db-data
+         target: /var/lib/mysql
      secrets:
        - mysqlpasswd
 secrets:                        # top level secrets block
@@ -23,4 +23,4 @@ secrets:                        # top level secrets block
 volumes:
    db-data:
 networks:
-	mynet
+  mynet:
