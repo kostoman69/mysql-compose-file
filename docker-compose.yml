@@ -31,16 +31,14 @@ services:
      # within the container. The source name and destination mountpoint are both set to the secret name.
      secrets:
        - mysql-root-passwd
-   
    adminer:
     image: adminer
     restart: always
     container_name: adminer
     ports:
-      - 8080:8080
+      - 8081:8080
     networks:
       - net
-   
    traccar:
      image: traccar/traccar:4.11
      container_name: traccar
@@ -48,7 +46,7 @@ services:
      networks:
        - net
      ports:
-       - "80:8082"
+       - "8080:8082"
        - "5000-5150:5000-5150"
        - "5000-5150:5000-5150/udp"
      volumes:
@@ -56,7 +54,14 @@ services:
          source: ./traccar-image/traccar.xml
          target: /opt/traccar/conf/traccar.xml
          read_only: true
-
+   ranking:
+     image: ranking
+     container_name: ranking
+     restart: always
+     networks:
+       - net
+     ports:
+       - "80:80"
 secrets:                        # top level secrets block
   mysql-root-passwd:
     file: mysql-root-passwd.txt
