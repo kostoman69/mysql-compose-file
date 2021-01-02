@@ -55,7 +55,7 @@ services:
          target: /opt/traccar/conf/traccar.xml
          read_only: true
    ranking:
-     image: ranking
+     image: kostoman/ranking
      container_name: ranking
      restart: always
      networks:
